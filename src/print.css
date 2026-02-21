@@ -1,0 +1,63 @@
+/* =========================================
+   Add this entire block to your index.css
+   ========================================= */
+
+@media print {
+    /* Force background colors/images to print (browsers suppress them by default) */
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    /* Hide everything on the page first */
+    body * {
+        visibility: hidden;
+    }
+
+    /* Then reveal only our three sections */
+    #section-landing,
+    #section-landing *,
+    #section-page1,
+    #section-page1 *,
+    #section-page3,
+    #section-page3 * {
+        visibility: visible;
+    }
+
+    /* Stack sections correctly and remove screen-only layout */
+    #section-landing,
+    #section-page1,
+    #section-page3 {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        overflow: visible !important;
+    }
+
+    /* Each section = one PDF page */
+    #section-landing {
+        page-break-after: always;
+        break-after: page;
+    }
+
+    #section-page1 {
+        page-break-after: always;
+        break-after: page;
+    }
+
+    /* Hide the download button itself while printing */
+    #pdf-download-btn {
+        display: none !important;
+        visibility: hidden !important;
+    }
+
+    /* Ensure overflow-hidden/scroll containers show fully */
+    #section-landing *,
+    #section-page1 *,
+    #section-page3 * {
+        overflow: visible !important;
+        max-height: none !important;
+        max-width: none !important;
+    }
+}
