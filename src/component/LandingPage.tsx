@@ -124,13 +124,13 @@ const LandingPage = () => {
                                 ‹
                             </button>
 
-                            <button
-                                onClick={() => { setPickerYear(year); setShowPicker(s => !s); }}
-                                className="bg-white/[0.12] border-2 border-white/30 rounded-lg text-white px-2 py-1 sm:px-3 sm:py-1 text-center hover:bg-white/[0.22]"
-                            >
-                                <div className="font-bold text-sm sm:text-base lg:text-lg leading-tight">{MONTHS[month]}</div>
-                                <div className="font-normal text-xs opacity-85 leading-tight">{year}</div>
-                            </button>
+                            <div
+  className="bg-white/[0.12] border-2 border-white/30 rounded-lg text-white px-2 py-1 sm:px-3 sm:py-1 text-center cursor-pointer hover:bg-white/[0.22]"
+  onClick={() => { setPickerYear(year); setShowPicker(s => !s); }}
+>
+  <div className="font-bold text-sm sm:text-base lg:text-lg leading-tight">{MONTHS[month]}</div>
+  <div className="font-normal text-xs opacity-85 leading-tight">{year}</div>
+</div>
 
                             <button onClick={goForward} className="bg-white/15 rounded-full text-white text-base w-6 h-6 sm:w-7 sm:h-7 flex justify-center items-center hover:bg-white/[0.28]">
                                 ›
