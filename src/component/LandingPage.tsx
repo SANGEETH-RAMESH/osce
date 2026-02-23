@@ -103,12 +103,11 @@ const LandingPage = () => {
 
             <div
                 id="print-area"
-                className="mx-auto min-h-screen print:h-full print:flex print:flex-col print:justify-center relative font-[Poppins,sans-serif]
-                px-3 pt-10 pb-6 
-                sm:px-6 sm:pt-12 sm:pb-8 
-                lg:px-10 lg:pt-14 lg:pb-10 
-                max-w-[1400px] 
-                print:max-w-none print:px-6 print:pt-6 print:pb-6"
+                className="mx-auto min-h-screen relative font-[Poppins,sans-serif]
+  px-3 pt-10 pb-6 
+  sm:px-6 sm:pt-12 sm:pb-8 
+  lg:px-10 lg:pt-14 lg:pb-10 
+  max-w-[1400px]"
             >
 
                 <div className="relative z-10 flex flex-wrap justify-between items-start gap-3 mb-3 sm:mb-4 lg:mb-5">
@@ -125,12 +124,12 @@ const LandingPage = () => {
                             </button>
 
                             <div
-  className="bg-white/[0.12] border-2 border-white/30 rounded-lg text-white px-2 py-1 sm:px-3 sm:py-1 text-center cursor-pointer hover:bg-white/[0.22]"
-  onClick={() => { setPickerYear(year); setShowPicker(s => !s); }}
->
-  <div className="font-bold text-sm sm:text-base lg:text-lg leading-tight">{MONTHS[month]}</div>
-  <div className="font-normal text-xs opacity-85 leading-tight">{year}</div>
-</div>
+                                className="bg-white/[0.12] border-2 border-white/30 rounded-lg text-white px-2 py-1 sm:px-3 sm:py-1 text-center cursor-pointer hover:bg-white/[0.22]"
+                                onClick={() => { setPickerYear(year); setShowPicker(s => !s); }}
+                            >
+                                <div className="font-bold text-sm sm:text-base lg:text-lg leading-tight">{MONTHS[month]}</div>
+                                <div className="font-normal text-xs opacity-85 leading-tight">{year}</div>
+                            </div>
 
                             <button onClick={goForward} className="bg-white/15 rounded-full text-white text-base w-6 h-6 sm:w-7 sm:h-7 flex justify-center items-center hover:bg-white/[0.28]">
                                 ›
@@ -189,7 +188,7 @@ const LandingPage = () => {
             </div> */}
 
                 <div className="relative z-10 w-full sm:w-[95%] lg:w-[70%] print:w-[85%] mx-auto overflow-x-auto print:overflow-visible">
-  <div className="min-w-[560px] md:min-w-0 grid grid-cols-7 gap-1 sm:gap-2 lg:gap-4">
+                    <div className="min-w-[560px] md:min-w-0 grid grid-cols-7 gap-1 sm:gap-2 lg:gap-4">
                         {cells.map((day, idx) => {
                             if (day === null) return <div key={`empty-${idx}`} />;
 

@@ -1,14 +1,16 @@
 @import "tailwindcss";
 
+/* ===== Base Reset ===== */
 html,
 body {
   margin: 0;
   padding: 0;
 }
 
-
+/* ===== Print Styles (Clean & Minimal) ===== */
 @media print {
 
+  /* Page Setup */
   @page {
     size: A3 landscape;
     margin: 8mm;
@@ -20,87 +22,27 @@ body {
     padding: 0 !important;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
-    color-adjust: exact !important;
   }
 
-  body * {
-    visibility: hidden !important;
+  /* Keep colors & backgrounds */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
   }
 
-  #print-area,
-  #print-area * {
-    visibility: visible !important;
-  }
-
-  #print-area {
-    width: 100% !important;
-    max-width: 1200px !important;
-    margin: 0 auto !important;
-  }
-
-  .min-h-screen {
-    min-height: auto !important;
-  }
-
-  .overflow-x-auto {
-    overflow: visible !important;
-  }
-
+  /* Hide only interactive elements */
   button {
     display: none !important;
   }
 
-  .bg-\[\#2E817B\] {
-    background-color: #2E817B !important;
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
+  /* Prevent unwanted scroll clipping */
+  .overflow-x-auto {
+    overflow: visible !important;
   }
 
-  img {
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
+  /* Ensure full width layout */
+  #print-area {
+    width: 100% !important;
+    margin: 0 auto !important;
   }
-
-  .absolute.inset-0 {
-    position: absolute !important;
-    inset: 0 !important;
-  }
-
-  .text-white,
-  .text-white\/75 {
-    color: white !important;
-  }
-
-  .bg-white\/\[0\.12\],
-  .bg-white\/15,
-  .bg-white\/\[0\.28\] {
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
-  }
-
-  .relative {
-    position: relative !important;
-  }
-
-  .z-0 {
-    z-index: 0 !important;
-  }
-
-  .z-10 {
-    z-index: 10 !important;
-  }
-
-  .grid-cols-7 {
-    gap: 16px !important;
-  }
-
-  .print-page {
-    page-break-after: always;
-    break-after: page;
-  }
-
-  .print-page:last-child {
-    page-break-after: auto;
-  }
-
 }
