@@ -1,4 +1,4 @@
-import React from "react";
+
 
 const SESSION_COLORS = {
   1: {
@@ -13,9 +13,23 @@ const SESSION_COLORS = {
     badge: "#0EA5E9",
     text: "#0369A1",
   },
-};
+} as const;  
 
-export default function CalendarCard({ dayName, dayShort, dateNum, session, time, topic }) {
+
+
+type SessionType = keyof typeof SESSION_COLORS;
+
+interface CalendarCardProps {
+  dayName: string;
+  dayShort: string;
+  dateNum: number;
+  session?: SessionType;
+  time?: string;
+  topic?: string;
+}
+
+
+export default function CalendarCard({ dayName, dayShort, dateNum, session, time, topic }:CalendarCardProps) {
   const hasEvent = !!session;
   const isSelfRevision = topic === "Self Revision";
   const c = hasEvent ? SESSION_COLORS[session] : null;
@@ -25,12 +39,12 @@ export default function CalendarCard({ dayName, dayShort, dateNum, session, time
       style={{
         aspectRatio: "1",
         borderRadius: "14px",
-        border: hasEvent ? `2px solid ${c.accent}` : "2px solid #334155",
+        border: hasEvent ? `2px solid ${c!.accent}` : "2px solid #334155",
         background: hasEvent ? "#fff" : "#1e293b",
         display: "flex",
         flexDirection: "column",
         overflow: "hidden",
-        boxShadow: hasEvent ? `0 4px 14px ${c.accent}33` : "none",
+        boxShadow: hasEvent ? `0 4px 14px ${c!.accent}33` : "none",
         transition: "transform 0.15s",
         cursor: hasEvent ? "pointer" : "default",
         fontFamily: "'Nunito', 'Poppins', sans-serif",
@@ -38,10 +52,9 @@ export default function CalendarCard({ dayName, dayShort, dateNum, session, time
       onMouseEnter={e => hasEvent && (e.currentTarget.style.transform = "scale(1.03)")}
       onMouseLeave={e => (e.currentTarget.style.transform = "scale(1)")}
     >
-      {/* Date header */}
       <div
         style={{
-          background: hasEvent ? c.accent : "#334155",
+          background: hasEvent ? c!.accent : "#334155",
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
@@ -56,14 +69,12 @@ export default function CalendarCard({ dayName, dayShort, dateNum, session, time
         </span>
       </div>
 
-      {/* Body */}
       {hasEvent && (
         <div style={{ flex: 1, display: "flex", flexDirection: "column", padding: "5px 6px 6px", gap: 4 }}>
-          {/* Session + time row */}
           <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
             <span
               style={{
-                background: c.accent,
+                background: c!.accent,
                 color: "#fff",
                 borderRadius: "99px",
                 fontWeight: 800,
@@ -89,11 +100,10 @@ export default function CalendarCard({ dayName, dayShort, dateNum, session, time
             </span>
           </div>
 
-          {/* Topic area */}
           <div
             style={{
               flex: 1,
-              background: c.accentLight,
+              background: c!.accentLight,
               borderRadius: "10px",
               display: "flex",
               flexDirection: "column",
@@ -106,14 +116,14 @@ export default function CalendarCard({ dayName, dayShort, dateNum, session, time
             {isSelfRevision ? (
               <>
                 <span style={{ fontSize: "clamp(14px, 3vw, 22px)" }}>📖</span>
-                <span style={{ color: c.text, fontWeight: 800, fontSize: "clamp(5px, 1vw, 8px)", marginTop: 2 }}>
+                <span style={{ color: c!.text, fontWeight: 800, fontSize: "clamp(5px, 1vw, 8px)", marginTop: 2 }}>
                   Self Revision
                 </span>
               </>
             ) : (
               <p
                 style={{
-                  color: c.text,
+                  color: c!.text,
                   fontWeight: 800,
                   fontSize: "clamp(5px, 1.05vw, 9px)",
                   lineHeight: 1.25,
