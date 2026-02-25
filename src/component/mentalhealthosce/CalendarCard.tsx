@@ -88,7 +88,7 @@ export default function CalendarCard({ dayName, dayShort, dateNum, session, time
             </span>
             <span
               style={{
-                color: "#94a3b8",
+                color: "black",
                 fontSize: "clamp(5px, 0.9vw, 8px)",
                 fontWeight: 600,
                 overflow: "hidden",
