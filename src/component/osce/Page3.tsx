@@ -1,5 +1,5 @@
-import hospital from '../assets/hospital.png';
-import nurselogo from '../assets/nurse.jpg'
+import hospital from '../../assets/hospital.png';
+import nurselogo from '../../assets/nurse.jpg'
 
 const rows = [
   {

@@ -1,16 +1,13 @@
 @import "tailwindcss";
 
-/* ===== Base Reset ===== */
 html,
 body {
   margin: 0;
   padding: 0;
 }
 
-/* ===== Print Styles (Clean & Minimal) ===== */
 @media print {
 
-  /* Page Setup */
   @page {
     size: A3 landscape;
     margin: 8mm;
@@ -24,23 +21,19 @@ body {
     print-color-adjust: exact !important;
   }
 
-  /* Keep colors & backgrounds */
   * {
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
   }
 
-  /* Hide only interactive elements */
   button {
     display: none !important;
   }
 
-  /* Prevent unwanted scroll clipping */
   .overflow-x-auto {
     overflow: visible !important;
   }
 
-  /* Ensure full width layout */
   #print-area {
     width: 100% !important;
     margin: 0 auto !important;

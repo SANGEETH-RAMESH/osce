@@ -1,7 +1,7 @@
 import { useState } from "react";
-import logo from "../assets/logo.png";
+import logo from "../../assets/logo.png";
 import CalendarCard from "./CalendarCard";
-import nurselogo from '../assets/nurse.jpg'
+import nurselogo from '../../assets/nurse.jpg'
 
 const MONTHS = [
     "January", "February", "March", "April",

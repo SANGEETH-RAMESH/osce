@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import nurselogo from '../assets/nurse.jpg';
+import nurselogo from '../../assets/nurse.jpg'
 
 interface Page1Props {
   start?: number;
