@@ -65,21 +65,21 @@ const days = [
   },
   {
     day: "09",
-    regularSession: "10:00 AM – 6:00 PM",
+    regularSession: "",
     topics: [],
     mode: "Self-Revision",
     isRevision: true,
   },
   {
     day: "10",
-    regularSession: "10:00 AM – 6:00 PM",
+    regularSession: "",
     topics: [],
     mode: "Self-Revision",
     isRevision: true,
   },
 ];
 
-const Page1 = ({ start , end }: Page1Props) => {
+const Page1 = ({ start, end }: Page1Props) => {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -97,26 +97,28 @@ const Page1 = ({ start , end }: Page1Props) => {
         alt=""
         className="absolute inset-0 w-full h-full object-cover opacity-10"
       />
-      {start! <= 5&&end!<=5 && <div className="text-center mb-10">
-        <p className="text-white/70 text-[11px] font-bold tracking-[4px] uppercase m-0 mb-2.5">
-          Nursing Skills Programme
-        </p>
-        <h1 className="text-white font-extrabold m-0 tracking-tight leading-[1.15] text-[clamp(24px,5vw,40px)]">
-          Online Training Schedule
-        </h1>
-        <p className="text-white/65 text-sm mt-2.5">
-          10-day structured clinical skills programme · Live &amp; repeat sessions available
-        </p>
-      </div>}
-
+      {start! <= 5 && end! <= 5 && (
+        <div className="text-center mb-10">
+          <p className="text-white/70 text-[11px] font-bold tracking-[4px] uppercase m-0 mb-2.5">
+            Nursing Skills Programme
+          </p>
+          <h1 className="text-white font-extrabold m-0 tracking-tight leading-[1.15] text-[clamp(24px,5vw,40px)]">
+            Online Training Schedule
+          </h1>
+          <p className="text-white/65 text-sm mt-2.5">
+            10-day structured clinical skills programme · Live &amp; repeat sessions available
+          </p>
+        </div>
+      )}
 
       <div
-        className={`max-w-[960px] mx-auto rounded-[20px] overflow-hidden border border-white/20 shadow-[0_20px_60px_rgba(0,0,0,0.25)] transition-all duration-700 ease-out ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
-          }`}
+        className={`max-w-[960px] mx-auto rounded-[20px] overflow-hidden border border-white/20 shadow-[0_20px_60px_rgba(0,0,0,0.25)] transition-all duration-700 ease-out ${
+          visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
+        }`}
       >
         <div className="overflow-x-auto">
           <table
-            className="print:bg-white"
+            className="print:bg-white w-full"
             style={{ background: "rgba(255,255,255,0.08)" }}
           >
             <thead>
@@ -132,81 +134,135 @@ const Page1 = ({ start , end }: Page1Props) => {
               </tr>
             </thead>
             <tbody>
-              {days.slice(start, end).map((item, index) => (
-                <tr
-                  key={index}
-                  className="transition-all duration-200"
-                  style={{
-                    borderBottom: index < days.length - 1 ? "1px solid rgba(255,255,255,0.1)" : "none",
-                    background: item.isRevision
-                      ? "rgba(255,217,81,0.08)"
-                      : index % 2 === 0
-                        ? "rgba(255,255,255,0.04)"
-                        : "transparent",
-                  }}
-                  onMouseEnter={e =>
-                  (e.currentTarget.style.background = item.isRevision
-                    ? "rgba(255,217,81,0.16)"
-                    : "rgba(255,255,255,0.12)")
-                  }
-                  onMouseLeave={e =>
-                  (e.currentTarget.style.background = item.isRevision
-                    ? "rgba(255,217,81,0.08)"
-                    : index % 2 === 0
-                      ? "rgba(255,255,255,0.04)"
-                      : "transparent")
-                  }
-                >
-                  <td className="px-4 sm:px-5 py-4 print:py-3 whitespace-nowrap">
-                    <div
-                      className="w-12 h-12 sm:w-[52px] sm:h-[52px] rounded-full flex flex-col items-center justify-center"
+              {days.slice(start, end).map((item, index) =>
+                item.isRevision ? (
+                  /* ── Revision rows ── */
+                  <tr
+                    key={index}
+                    style={{
+                      background: "rgba(255, 210, 50, 0.35)",
+                      borderBottom: "1px solid rgba(255,217,81,0.25)",
+                    }}
+                    onMouseEnter={(e) =>
+                      (e.currentTarget.style.background = "rgba(255,210,50,0.45)")
+                    }
+                    onMouseLeave={(e) =>
+                      (e.currentTarget.style.background = "rgba(255,210,50,0.35)")
+                    }
+                  >
+                    {/* Day bubble */}
+                    <td
+                      className="px-4 sm:px-5 py-4 print:py-3 whitespace-nowrap"
                       style={{
-                        background: item.isRevision
-                          ? "linear-gradient(135deg, #FFD951, #ffb700)"
-                          : "rgba(255,255,255,0.95)",
-                        boxShadow: item.isRevision
-                          ? "0 4px 16px rgba(255,185,0,0.35), 0 0 0 4px rgba(255,217,81,0.25)"
-                          : "0 4px 14px rgba(0,0,0,0.15)",
+                        borderRadius:
+                          item.day === "09"
+                            ? "20px 0 0 0"
+                            : item.day === "10"
+                            ? "0 0 0 20px"
+                            : undefined,
                       }}
                     >
-                      <span className={`text-[9px] font-extrabold tracking-[1px] uppercase leading-none ${item.isRevision ? "text-black/55" : "text-[#2E817B]"}`}>
-                        Day
-                      </span>
-                      <span className={`text-lg font-black leading-[1.1] ${item.isRevision ? "text-[#1a3a00]" : "text-[#1a5c58]"}`}>
-                        {item.day}
-                      </span>
-                    </div>
-                  </td>
-
-                  <td className="px-4 sm:px-5 py-[18px] whitespace-nowrap">
-                    <div className="flex items-center gap-2">
-                      <span className="text-base">{item.isRevision ? "📅" : "🕗"}</span>
-                      <span className="text-white font-bold text-sm sm:text-[15px]">{item.regularSession}</span>
-                    </div>
-                  </td>
-
-                  <td className="px-4 sm:px-5 py-[18px] whitespace-nowrap">
-                    {item.isRevision ? (
-                      <span className="text-white/35 text-lg">
-                        {/* — */}
+                      <div
+                        className="w-12 h-12 sm:w-[52px] sm:h-[52px] rounded-full flex flex-col items-center justify-center"
+                        style={{
+                          background: "linear-gradient(135deg, #FFD951, #ffb700)",
+                          boxShadow:
+                            "0 4px 16px rgba(255,185,0,0.35), 0 0 0 4px rgba(255,217,81,0.25)",
+                        }}
+                      >
+                        <span className="text-[9px] font-extrabold tracking-[1px] uppercase leading-none text-black/55">
+                          Day
                         </span>
-                    ) : (
+                        <span className="text-lg font-black leading-[1.1] text-[#1a3a00]">
+                          {item.day}
+                        </span>
+                      </div>
+                    </td>
+
+                    {/* Self-Revision badge centred across remaining 4 columns */}
+                    <td
+                      colSpan={4}
+                      className="px-4 sm:px-5 py-[18px] text-center"
+                      style={{
+                        borderRadius:
+                          item.day === "09"
+                            ? "0 20px 0 0"
+                            : item.day === "10"
+                            ? "0 0 20px 0"
+                            : undefined,
+                      }}
+                    >
+                      <span className="bg-[#FFD951] text-[#1a3a38] px-3.5 py-[5px] rounded-[20px] font-extrabold text-[11px] tracking-[0.5px] uppercase inline-flex items-center gap-1">
+                        ✏️ Self-Revision
+                      </span>
+                    </td>
+                  </tr>
+                ) : (
+                  /* ── Regular rows ── */
+                  <tr
+                    key={index}
+                    className="transition-all duration-200"
+                    style={{
+                      borderBottom:
+                        index < days.length - 1
+                          ? "1px solid rgba(255,255,255,0.1)"
+                          : "none",
+                      background:
+                        index % 2 === 0
+                          ? "rgba(255,255,255,0.04)"
+                          : "transparent",
+                    }}
+                    onMouseEnter={(e) =>
+                      (e.currentTarget.style.background = "rgba(255,255,255,0.12)")
+                    }
+                    onMouseLeave={(e) =>
+                      (e.currentTarget.style.background =
+                        index % 2 === 0 ? "rgba(255,255,255,0.04)" : "transparent")
+                    }
+                  >
+                    {/* Day bubble */}
+                    <td className="px-4 sm:px-5 py-4 print:py-3 whitespace-nowrap">
+                      <div
+                        className="w-12 h-12 sm:w-[52px] sm:h-[52px] rounded-full flex flex-col items-center justify-center"
+                        style={{
+                          background: "rgba(255,255,255,0.95)",
+                          boxShadow: "0 4px 14px rgba(0,0,0,0.15)",
+                        }}
+                      >
+                        <span className="text-[9px] font-extrabold tracking-[1px] uppercase leading-none text-[#2E817B]">
+                          Day
+                        </span>
+                        <span className="text-lg font-black leading-[1.1] text-[#1a5c58]">
+                          {item.day}
+                        </span>
+                      </div>
+                    </td>
+
+                    {/* Regular Session */}
+                    <td className="px-4 sm:px-5 py-[18px] whitespace-nowrap">
+                      <div className="flex items-center gap-2">
+                        <span className="text-base">🕗</span>
+                        <span className="text-white font-bold text-sm sm:text-[15px]">
+                          {item.regularSession}
+                        </span>
+                      </div>
+                    </td>
+
+                    {/* Repeat Session */}
+                    <td className="px-4 sm:px-5 py-[18px] whitespace-nowrap">
                       <div className="flex flex-col gap-0.5">
                         <div className="flex items-center gap-2">
                           <span className="text-base">🔄</span>
-                          <span className="text-white font-bold text-sm sm:text-[15px]">10:00 AM</span>
+                          <span className="text-white font-bold text-sm sm:text-[15px]">
+                            10:00 AM
+                          </span>
                         </div>
                         <span className="text-white/50 text-[11px] pl-6">Next Day</span>
                       </div>
-                    )}
-                  </td>
+                    </td>
 
-                  <td className="px-4 sm:px-5 py-[18px]">
-                    {item.isRevision ? (
-                      <span className="text-[#FFD951]/80 text-[13px] font-semibold italic">
-                        {/* Personal study &amp; review */}
-                      </span>
-                    ) : (
+                    {/* Topics */}
+                    <td className="px-4 sm:px-5 py-[18px]">
                       <div className="flex flex-wrap gap-1.5">
                         {item.topics.map((topic, idx) => (
                           <span
@@ -217,16 +273,17 @@ const Page1 = ({ start , end }: Page1Props) => {
                           </span>
                         ))}
                       </div>
-                    )}
-                  </td>
+                    </td>
 
-                  <td className="px-4 sm:px-5 py-[18px] whitespace-nowrap">
-                    <span className="bg-[#FFD951] text-[#1a3a38] px-3.5 py-[5px] rounded-[20px] font-extrabold text-[11px] tracking-[0.5px] uppercase inline-flex items-center gap-1">
-                      {item.isRevision ? "✏️ " : ""}{item.mode}
-                    </span>
-                  </td>
-                </tr>
-              ))}
+                    {/* Mode */}
+                    <td className="px-4 sm:px-5 py-[18px] whitespace-nowrap">
+                      <span className="bg-[#FFD951] text-[#1a3a38] px-3.5 py-[5px] rounded-[20px] font-extrabold text-[11px] tracking-[0.5px] uppercase inline-flex items-center gap-1">
+                        {item.mode}
+                      </span>
+                    </td>
+                  </tr>
+                )
+              )}
             </tbody>
           </table>
         </div>
