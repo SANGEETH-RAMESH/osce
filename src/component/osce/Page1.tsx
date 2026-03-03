@@ -38,14 +38,14 @@ const days = [
   {
     day: "05",
     regularSession: "8:30 PM",
-    topics: ["Fine-bore Nasogastric Tube", "Pain Assessment", "Wound Assessment", "ANTT", "Anti-embolic Stockings"],
+    topics: ["Fine-bore Nasogastric Tube", "Pain Assessment", "Wound Assessment", "ANTT", "Anti-embolism Stockings"],
     mode: "Online",
     isRevision: false,
   },
   {
     day: "06",
     regularSession: "8:30 PM",
-    topics: ["Removal of Catheter", "Catheter Sample of Urine", "Oral Care Plan", "Mid-stream Urine Analysis", "Pre-operative Assessment"],
+    topics: ["Removal of Catheter", "Catheter Sample of Urine", "Oral Care Plan", "Mid-stream Urine Analysis", "Pre-operative Check"],
     mode: "Online",
     isRevision: false,
   },

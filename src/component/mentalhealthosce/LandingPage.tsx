@@ -23,6 +23,7 @@ const mockEvents: { date: number; session: 1 | 2; time: string; topic: string }[
     { date: 26, session: 2, time: "08:30 PM – 10:30 PM", topic: "IM Injection & Reminiscence Therapy" },
     { date: 27, session: 2, time: "08:30 PM – 10:30 PM", topic: "Self Revision" },
     { date: 28, session: 2, time: "08:30 PM – 10:30 PM", topic: "Self Revision" },
+    { date: 29, session: 2, time: "08:30 PM – 10:30 PM", topic: "Self Revision" },
 ];
 
 const SESSION_COLORS = {
