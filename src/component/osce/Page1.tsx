@@ -140,14 +140,14 @@ const Page1 = ({ start, end }: Page1Props) => {
                   <tr
                     key={index}
                     style={{
-                      background: "rgba(255, 210, 50, 0.35)",
+                      background: "rgba(255, 210, 50, 0.25)",
                       borderBottom: "1px solid rgba(255,217,81,0.25)",
                     }}
                     onMouseEnter={(e) =>
-                      (e.currentTarget.style.background = "rgba(255,210,50,0.45)")
+                      (e.currentTarget.style.background = "rgba(255,210,50,0.40)")
                     }
                     onMouseLeave={(e) =>
-                      (e.currentTarget.style.background = "rgba(255,210,50,0.35)")
+                      (e.currentTarget.style.background = "rgba(255,210,50,0.25)")
                     }
                   >
                     {/* Day bubble */}
