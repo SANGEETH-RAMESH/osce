@@ -187,7 +187,9 @@ const Page1 = ({ start , end }: Page1Props) => {
 
                   <td className="px-4 sm:px-5 py-[18px] whitespace-nowrap">
                     {item.isRevision ? (
-                      <span className="text-white/35 text-lg">—</span>
+                      <span className="text-white/35 text-lg">
+                        {/* — */}
+                        </span>
                     ) : (
                       <div className="flex flex-col gap-0.5">
                         <div className="flex items-center gap-2">
@@ -202,7 +204,7 @@ const Page1 = ({ start , end }: Page1Props) => {
                   <td className="px-4 sm:px-5 py-[18px]">
                     {item.isRevision ? (
                       <span className="text-[#FFD951]/80 text-[13px] font-semibold italic">
-                        Personal study &amp; review
+                        {/* Personal study &amp; review */}
                       </span>
                     ) : (
                       <div className="flex flex-wrap gap-1.5">
